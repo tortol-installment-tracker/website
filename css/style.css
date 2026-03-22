@@ -245,6 +245,7 @@ section { position: relative; z-index: 1; }
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  justify-content: center;
 }
 
 .screenshots-grid::-webkit-scrollbar { display: none; }
