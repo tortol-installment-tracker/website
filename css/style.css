@@ -209,6 +209,8 @@ section { position: relative; z-index: 1; }
   background: var(--surface);
   border-top: 1px solid var(--divider);
   border-bottom: 1px solid var(--divider);
+  text-align: center;
+  overflow: hidden;
 }
 
 .section-label {
@@ -238,14 +240,14 @@ section { position: relative; z-index: 1; }
 }
 
 .screenshots-grid {
-  display: flex;
+  display: inline-flex;
   gap: 16px;
   overflow-x: auto;
+  max-width: 100%;
   padding: 8px 24px 16px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  justify-content: center;
 }
 
 .screenshots-grid::-webkit-scrollbar { display: none; }
