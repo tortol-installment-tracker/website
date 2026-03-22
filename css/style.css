@@ -175,6 +175,10 @@ section { position: relative; z-index: 1; }
 .badge:hover { opacity: .85; transform: translateY(-1px); text-decoration: none; }
 .badge svg { flex-shrink: 0; }
 
+.badge-img { display: inline-block; transition: opacity .2s, transform .15s; }
+.badge-img:hover { opacity: .85; transform: translateY(-1px); }
+.badge-img img { height: 48px; width: auto; display: block; border-radius: 8px; }
+
 .badge-note {
   font-size: 12px;
   color: var(--subtle);
