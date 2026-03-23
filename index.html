@@ -58,53 +58,48 @@
   <section class="screenshots-section">
     <div class="section-label">See it in action</div>
     <div class="section-title">Everything you need, at a glance</div>
-    <p class="section-sub">Scroll to explore the app</p>
+    <p class="section-sub">Swipe to explore the app</p>
 
     <div class="screenshots-grid">
 
       <div class="screenshot-card">
-        <div class="screenshot-placeholder">
-          <span class="ph-icon">🏠</span>
-          Dashboard<br />Screenshot
-          <small style="opacity:.6;font-size:11px;margin-top:4px">Replace with<br/>actual screenshot</small>
-        </div>
+        <img src="images/01-hero.png" alt="Tortol intro" />
+        <p class="screenshot-caption">Welcome</p>
+      </div>
+
+      <div class="screenshot-card">
+        <img src="images/02-dashboard.png" alt="Dashboard" />
         <p class="screenshot-caption">Dashboard</p>
       </div>
 
       <div class="screenshot-card">
-        <div class="screenshot-placeholder">
-          <span class="ph-icon">💳</span>
-          Card Detail<br />Screenshot
-          <small style="opacity:.6;font-size:11px;margin-top:4px">Replace with<br/>actual screenshot</small>
-        </div>
-        <p class="screenshot-caption">Card Detail</p>
+        <img src="images/03-card-setup.png" alt="Card Setup" />
+        <p class="screenshot-caption">Card Setup</p>
       </div>
 
       <div class="screenshot-card">
-        <div class="screenshot-placeholder">
-          <span class="ph-icon">➕</span>
-          Add Installment<br />Screenshot
-          <small style="opacity:.6;font-size:11px;margin-top:4px">Replace with<br/>actual screenshot</small>
-        </div>
-        <p class="screenshot-caption">Add Installment</p>
+        <img src="images/04-installments.png" alt="Installments" />
+        <p class="screenshot-caption">Installments</p>
       </div>
 
       <div class="screenshot-card">
-        <div class="screenshot-placeholder">
-          <span class="ph-icon">🔔</span>
-          Payment Reminder<br />Screenshot
-          <small style="opacity:.6;font-size:11px;margin-top:4px">Replace with<br/>actual screenshot</small>
-        </div>
+        <img src="images/05-multicurrency.png" alt="Multi-Currency" />
+        <p class="screenshot-caption">Multi-Currency</p>
+      </div>
+
+      <div class="screenshot-card">
+        <img src="images/06-reminders.png" alt="Reminders" />
         <p class="screenshot-caption">Reminders</p>
       </div>
 
       <div class="screenshot-card">
-        <div class="screenshot-placeholder">
-          <span class="ph-icon">🔒</span>
-          PIN Lock<br />Screenshot
-          <small style="opacity:.6;font-size:11px;margin-top:4px">Replace with<br/>actual screenshot</small>
-        </div>
-        <p class="screenshot-caption">PIN Lock</p>
+        <img src="images/07-security.png" alt="Security" />
+        <p class="screenshot-caption">Security</p>
+      </div>
+
+      <div class="screenshot-card">
+        <img src="images/08-pricing.png" alt="Pricing" />
+        <p class="screenshot-caption">Pricing</p>
       </div>
 
     </div>
@@ -261,5 +256,33 @@
     <p style="margin-top:6px;">Works with any currency, anywhere.</p>
   </footer>
 
+  <script>
+    const grid = document.querySelector('.screenshots-grid');
+    let isDown = false, startX, scrollLeft;
+
+    grid.addEventListener('mousedown', e => {
+      isDown = true;
+      grid.classList.add('dragging');
+      startX = e.pageX - grid.offsetLeft;
+      scrollLeft = grid.scrollLeft;
+    });
+    grid.addEventListener('mouseleave', () => { isDown = false; grid.classList.remove('dragging'); });
+    grid.addEventListener('mouseup', e => {
+      if (!isDown) return;
+      isDown = false;
+      grid.classList.remove('dragging');
+      const x = e.pageX - grid.offsetLeft;
+      const delta = startX - x;
+      const cardWidth = grid.querySelector('.screenshot-card').offsetWidth + 16;
+      const targetIndex = Math.round((scrollLeft + delta) / cardWidth);
+      grid.scrollTo({ left: targetIndex * cardWidth, behavior: 'smooth' });
+    });
+    grid.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - grid.offsetLeft;
+      grid.scrollLeft = scrollLeft - (x - startX);
+    });
+  </script>
 </body>
 </html>

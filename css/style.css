@@ -248,20 +248,27 @@ section { position: relative; z-index: 1; }
 }
 
 .screenshots-grid {
-  display: inline-flex;
+  display: flex;
   gap: 16px;
   overflow-x: auto;
-  max-width: 100%;
-  padding: 8px 24px 16px;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 8px 24px 24px;
   scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
 }
+
+.screenshots-grid.dragging { cursor: grabbing; }
 
 .screenshots-grid::-webkit-scrollbar { display: none; }
 
 .screenshot-card {
-  flex: 0 0 200px;
+  flex: 0 0 420px;
   scroll-snap-align: start;
 }
 
@@ -289,12 +296,13 @@ section { position: relative; z-index: 1; }
 }
 
 .screenshot-card img {
-  width: 200px;
-  height: 356px;
+  width: 420px;
+  height: 750px;
   border-radius: 20px;
   object-fit: cover;
   border: 2px solid var(--divider);
   display: block;
+  pointer-events: none;
 }
 
 .screenshot-caption {
