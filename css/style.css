@@ -298,7 +298,7 @@ section { position: relative; z-index: 1; }
 
 .screenshot-card img {
   width: 420px;
-  height: 750px;
+  height: 909px;
   border-radius: 20px;
   object-fit: cover;
   border: 2px solid var(--divider);
